@@ -1,0 +1,10 @@
+// use prisma-8
+
+// The app keeps its whole JSON-shaped state in one row of this table; the
+// service seeds it on first boot and reads/writes it with raw SQL.
+model NixiAppState {
+  id      String @id
+  payload Json
+
+  @@map("nixi_app_state")
+}

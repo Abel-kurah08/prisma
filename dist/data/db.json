@@ -1,0 +1,39 @@
+{
+  "users": [],
+  "transactions": [],
+  "conversionRequests": [],
+  "withdrawalRequests": [],
+  "activationRequests": [],
+  "upgradeRequests": [],
+  "settings": {
+    "conversionFee": 0.071,
+    "activationFee": 8300,
+    "activationBankName": "Moniepoint MFB",
+    "activationAccountNumber": "0000000000",
+    "activationAccountHolder": "Nixi Platform",
+    "brand": "APiX",
+    "mode": "sandbox",
+    "upgradeAccounts": {
+      "2": {
+        "bankName": "Moniepoint MFB",
+        "accountNumber": "0000000000",
+        "accountHolder": "Nixi Platform"
+      },
+      "3": {
+        "bankName": "Moniepoint MFB",
+        "accountNumber": "0000000000",
+        "accountHolder": "Nixi Platform"
+      },
+      "4": {
+        "bankName": "Moniepoint MFB",
+        "accountNumber": "0000000000",
+        "accountHolder": "Nixi Platform"
+      },
+      "5": {
+        "bankName": "Moniepoint MFB",
+        "accountNumber": "0000000000",
+        "accountHolder": "Nixi Platform"
+      }
+    }
+  }
+}

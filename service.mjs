@@ -7,5 +7,5 @@ export default compute({
   name: "nixi",
   deps: { db: rawPostgres() },
   input: type({ sessionSecret: secretString(), adminKey: secretString() }),
-  build: node({ module: import.meta.url, entry: "../dist/server.mjs" }),
+  build: node({ module: import.meta.url, dir: "./dist", entry: "server.mjs" }),
 });

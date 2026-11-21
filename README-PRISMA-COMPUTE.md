@@ -17,7 +17,7 @@ This project now declares a Prisma Compute service using Prisma Composer. It pro
 
 ## Local Compute testing
 
-Run `bun run build`, then `npx prisma dev module.ts`. Prisma's local Compute workflow provisions a local database. Use the URL printed for the `nixi` service to test the website/API.
+Run `bun run build`, then `npx prisma dev --detach`. Prisma's local Compute workflow provisions a local database. Use the URL printed for the `nixi` service to test the website/API.
 
 
 ## Data migration note
