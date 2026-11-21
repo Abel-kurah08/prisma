@@ -3,13 +3,13 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as crypto from 'node:crypto';
 import dns from 'node:dns/promises';
-import { URL } from 'node:url';
+import { URL, fileURLToPath } from 'node:url';
 
-const ROOT = __dirname;
+const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC = path.join(ROOT, 'public');
 const UPLOADS = path.join(ROOT, 'uploads');
 fs.mkdirSync(UPLOADS, { recursive: true });
-import service from "./service.ts";
+import service from "./service.mjs";
 import { SQL } from "bun";
 const { db: computeDb } = service.load();
 const serviceSecrets = service.input();

@@ -2,17 +2,27 @@
   "name": "nixi-apix-compute",
   "private": true,
   "version": "1.2.0",
+  "type": "module",
   "scripts": {
     "build": "bun build server.ts --target=bun --outfile dist/server.mjs && mkdir -p dist/public dist/data dist/uploads && cp -R public/. dist/public/ && cp -R data/. dist/data/",
-    "deploy": "npm run build && npx prisma deploy",
-    "dev:compute": "npm run build && npx prisma dev module.ts"
+    "deploy": "npm run build && prisma deploy",
+    "dev:compute": "npm run build && prisma dev"
   },
   "dependencies": {
-    "@prisma/composer": "latest",
-    "@prisma/composer-prisma-cloud": "latest",
-    "arktype": "latest"
+    "@prisma/composer": "0.38.0",
+    "@prisma/composer-prisma-cloud": "0.38.0",
+    "@prisma/orm-postgres": "8.0.0-rc.23",
+    "arktype": "^2.1.20",
+    "effect": "4.0.5"
   },
   "devDependencies": {
-    "prisma": "latest"
+    "prisma": "8.0.0-rc.33"
+  },
+  "overrides": {
+    "effect": "4.0.5",
+    "@effect/vitest": "4.0.5",
+    "@effect/platform-bun": "4.0.5",
+    "@effect/platform-node": "4.0.5",
+    "@effect/platform-node-shared": "4.0.5"
   }
 }

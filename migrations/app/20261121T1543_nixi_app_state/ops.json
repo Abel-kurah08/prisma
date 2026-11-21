@@ -1,0 +1,68 @@
+[
+  {
+    "id": "schema.public",
+    "label": "Create schema \"public\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres"
+    },
+    "precheck": [],
+    "execute": [
+      {
+        "description": "Create schema \"public\"",
+        "sql": "CREATE SCHEMA IF NOT EXISTS \"public\"",
+        "params": []
+      }
+    ],
+    "postcheck": []
+  },
+  {
+    "id": "table.nixi_app_state",
+    "label": "Create table \"nixi_app_state\"",
+    "summary": "Creates table \"nixi_app_state\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "nixi_app_state"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"nixi_app_state\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"nixi_app_state\""
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"nixi_app_state\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"nixi_app_state\"",
+        "sql": "CREATE TABLE \"public\".\"nixi_app_state\" (\n  \"id\" text NOT NULL,\n  \"payload\" json NOT NULL,\n  PRIMARY KEY (\"id\")\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"nixi_app_state\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_class\" AS \"c\" WHERE (\"c\".\"oid\" = to_regclass($1) AND (\"c\".\"relkind\" = $2 OR \"c\".\"relkind\" = $3))) AS \"result\"",
+        "params": [
+          "\"public\".\"nixi_app_state\"",
+          "r",
+          "p"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"nixi_app_state\""
+        }
+      }
+    ]
+  }
+]
